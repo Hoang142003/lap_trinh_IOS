@@ -18,8 +18,9 @@ class SearchController: UIViewController, UITableViewDataSource, UITableViewDele
     @IBOutlet weak var tableCate: UITableView!
     @IBOutlet weak var btnDay: UIButton!
     @IBOutlet weak var btnCate: UIButton!
-    let optionDay=["this month","this week"]
-    let optionCate=["Job","Breakfast"]
+    let optionDay=["This month","This week"]
+    var cateList=[Category]()
+    private var dao:Database_layer!
     override func viewDidLoad() {
         super.viewDidLoad()
         view1.layer.cornerRadius=10
@@ -34,6 +35,9 @@ class SearchController: UIViewController, UITableViewDataSource, UITableViewDele
         myTable.layer.cornerRadius=10
         tableDay.isHidden=true
         tableCate.isHidden=true
+        //Khoi tao doi tuong database
+        dao=Database_layer()
+        dao.getAllCate(categories: &cateList)
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -65,7 +69,7 @@ class SearchController: UIViewController, UITableViewDataSource, UITableViewDele
             item1?.textLabel?.text=optionDay[indexPath.row]
         }
         else if tableView.tag==2{
-            item1?.textLabel?.text=optionCate[indexPath.row]
+            item1?.textLabel?.text=cateList[indexPath.row].getCateName()
         }
         return item1!
     }
@@ -77,7 +81,7 @@ class SearchController: UIViewController, UITableViewDataSource, UITableViewDele
             return 2
         }
         else if tableView.tag==2{
-            return 2
+            return cateList.count
         }
         return 0
     }
@@ -92,15 +96,15 @@ class SearchController: UIViewController, UITableViewDataSource, UITableViewDele
         }
         else if tableView.tag==2{
             tableCate.isHidden=true
-            btnCate.setTitle(optionCate[indexPath.row], for: .normal  )
+            btnCate.setTitle(cateList[indexPath.row].getCateName(), for: .normal  )
         }
         
     }
     @IBAction func btnDay(_ sender: UIButton) {
         tableDay.isHidden=false
-        print("a")
     }
     @IBAction func btnCate(_ sender: UIButton) {
         tableCate.isHidden=false
+        print(cateList.count)
     }
 }
