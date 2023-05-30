@@ -12,11 +12,13 @@ class Dates{
     private var date_id:Int
     private var date:Date
     private var money:Double
+    private var wallet:Double
     // Constructor
-    init(date_id:Int,date:Date,money:Double) {
+    init(date_id:Int,date:Date,money:Double,wallet:Double) {
         self.date_id=date_id
         self.date=date
         self.money=money
+        self.wallet=wallet
     }
     //getter setter
     public func getDateID()->Int{
@@ -27,5 +29,8 @@ class Dates{
     }
     public func getMoney()->Double{
         return money
+    }
+    public func getWallet()->Double{
+        return wallet
     }
 }
