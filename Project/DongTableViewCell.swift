@@ -13,6 +13,8 @@ class DongTableViewCell: UITableViewCell {
     @IBOutlet weak var day: UILabel!
     @IBOutlet weak var weekday: UILabel!
     @IBOutlet weak var monthYear: UILabel!
+    @IBOutlet weak var moneyDay: UILabel!
+    @IBOutlet weak var moneyWallet: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

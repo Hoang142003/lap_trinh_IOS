@@ -27,10 +27,19 @@ class Dates{
     public func getDate()->Date{
         return date
     }
+    public func setDate(date:Date){
+        self.date=date
+    }
     public func getMoney()->Double{
         return money
     }
+    public func setMoney(money:Double){
+        self.money=money
+    }
     public func getWallet()->Double{
         return wallet
+    }
+    public func setWallet(wallet:Double){
+        self.wallet=wallet
     }
 }

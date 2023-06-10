@@ -23,4 +23,7 @@ class Money{
     public func getMoney()->Double{
         return money
     }
+    public func setMoney(money:Double){
+        self.money=money
+    }
 }

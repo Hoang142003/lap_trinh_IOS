@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		660B06D02A28352C000CA498 /* ChiTieuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B06CF2A28352C000CA498 /* ChiTieuViewController.swift */; };
+		660B06D22A2835F0000CA498 /* ThuNhapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B06D12A2835F0000CA498 /* ThuNhapViewController.swift */; };
+		660B06D42A28362E000CA498 /* AddHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B06D32A28362E000CA498 /* AddHistoryViewController.swift */; };
 		660B26FB29FD06E700ECCC26 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B26FA29FD06E700ECCC26 /* DetailController.swift */; };
 		660B26FD29FD167F00ECCC26 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B26FC29FD167F00ECCC26 /* SearchTableViewCell.swift */; };
 		660B26FF29FE0F0700ECCC26 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660B26FE29FE0F0700ECCC26 /* EditViewController.swift */; };
@@ -17,6 +20,12 @@
 		660C016E29F8CB2300B6C410 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 660C016C29F8CB2300B6C410 /* LaunchScreen.storyboard */; };
 		660C017929F8CB2300B6C410 /* ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660C017829F8CB2300B6C410 /* ProjectTests.swift */; };
 		660C018629F8FB7500B6C410 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660C018529F8FB7500B6C410 /* SearchController.swift */; };
+		660C882F2A286A4200AB0511 /* ThongKeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660C882E2A286A4200AB0511 /* ThongKeViewController.swift */; };
+		660C88312A286AA200AB0511 /* ThongKeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660C88302A286AA200AB0511 /* ThongKeTableViewCell.swift */; };
+		660C883C2A2887DB00AB0511 /* BeautifulBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660C88392A2887DB00AB0511 /* BeautifulBarChart.swift */; };
+		660C883D2A2887DB00AB0511 /* BarEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660C883A2A2887DB00AB0511 /* BarEntry.swift */; };
+		660C883E2A2887DB00AB0511 /* BasicBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660C883B2A2887DB00AB0511 /* BasicBarChart.swift */; };
+		660C88422A28883B00AB0511 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660C88412A28883B00AB0511 /* ViewController.swift */; };
 		66111ADB2A2481CE006A44F1 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 66111ADA2A2481CE006A44F1 /* libsqlite3.0.tbd */; };
 		66111ADE2A248222006A44F1 /* Database_layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66111ADD2A248222006A44F1 /* Database_layer.swift */; };
 		66111B142A2486F6006A44F1 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 66111B0A2A2486F5006A44F1 /* FMDatabaseQueue.m */; };
@@ -43,6 +52,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		660B06CF2A28352C000CA498 /* ChiTieuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChiTieuViewController.swift; sourceTree = "<group>"; };
+		660B06D12A2835F0000CA498 /* ThuNhapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThuNhapViewController.swift; sourceTree = "<group>"; };
+		660B06D32A28362E000CA498 /* AddHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHistoryViewController.swift; sourceTree = "<group>"; };
 		660B26FA29FD06E700ECCC26 /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		660B26FC29FD167F00ECCC26 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		660B26FE29FE0F0700ECCC26 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +69,12 @@
 		660C017829F8CB2300B6C410 /* ProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTests.swift; sourceTree = "<group>"; };
 		660C017A29F8CB2300B6C410 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		660C018529F8FB7500B6C410 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		660C882E2A286A4200AB0511 /* ThongKeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThongKeViewController.swift; sourceTree = "<group>"; };
+		660C88302A286AA200AB0511 /* ThongKeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThongKeTableViewCell.swift; sourceTree = "<group>"; };
+		660C88392A2887DB00AB0511 /* BeautifulBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeautifulBarChart.swift; sourceTree = "<group>"; };
+		660C883A2A2887DB00AB0511 /* BarEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarEntry.swift; sourceTree = "<group>"; };
+		660C883B2A2887DB00AB0511 /* BasicBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicBarChart.swift; sourceTree = "<group>"; };
+		660C88412A28883B00AB0511 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		66111ADA2A2481CE006A44F1 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		66111ADD2A248222006A44F1 /* Database_layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database_layer.swift; sourceTree = "<group>"; };
 		66111B092A2486F5006A44F1 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = src/FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -120,14 +138,16 @@
 		660C016229F8CB2100B6C410 /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				660C88322A2886FE00AB0511 /* barchar */,
 				66111B1A2A2492BC006A44F1 /* DataModel */,
 				66111B072A2486CB006A44F1 /* FMDB */,
-				66111ADC2A2481EF006A44F1 /* DAL */,
 				660C018429F8CB4F00B6C410 /* Controller */,
+				66111ADC2A2481EF006A44F1 /* DAL */,
 				660C018329F8CB3300B6C410 /* System files */,
 				661BF2F629FA74B20079F419 /* DongTableViewCell.swift */,
 				661BF2F829FBA2630079F419 /* DetailTableViewCell.swift */,
 				660B26FC29FD167F00ECCC26 /* SearchTableViewCell.swift */,
+				660C88302A286AA200AB0511 /* ThongKeTableViewCell.swift */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -160,8 +180,23 @@
 				660C018529F8FB7500B6C410 /* SearchController.swift */,
 				660B26FA29FD06E700ECCC26 /* DetailController.swift */,
 				660B26FE29FE0F0700ECCC26 /* EditViewController.swift */,
+				660B06CF2A28352C000CA498 /* ChiTieuViewController.swift */,
+				660B06D12A2835F0000CA498 /* ThuNhapViewController.swift */,
+				660B06D32A28362E000CA498 /* AddHistoryViewController.swift */,
+				660C882E2A286A4200AB0511 /* ThongKeViewController.swift */,
+				660C88412A28883B00AB0511 /* ViewController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		660C88322A2886FE00AB0511 /* barchar */ = {
+			isa = PBXGroup;
+			children = (
+				660C883A2A2887DB00AB0511 /* BarEntry.swift */,
+				660C883B2A2887DB00AB0511 /* BasicBarChart.swift */,
+				660C88392A2887DB00AB0511 /* BeautifulBarChart.swift */,
+			);
+			path = barchar;
 			sourceTree = "<group>";
 		};
 		66111AD92A2481CD006A44F1 /* Frameworks */ = {
@@ -323,21 +358,30 @@
 				66111B222A249887006A44F1 /* History.swift in Sources */,
 				660B26FF29FE0F0700ECCC26 /* EditViewController.swift in Sources */,
 				66111B1C2A249304006A44F1 /* Dates.swift in Sources */,
+				660C88312A286AA200AB0511 /* ThongKeTableViewCell.swift in Sources */,
 				66111ADE2A248222006A44F1 /* Database_layer.swift in Sources */,
+				660C883D2A2887DB00AB0511 /* BarEntry.swift in Sources */,
 				66111B182A2486F6006A44F1 /* FMResultSet.m in Sources */,
+				660B06D42A28362E000CA498 /* AddHistoryViewController.swift in Sources */,
 				66111B172A2486F6006A44F1 /* FMDatabase.m in Sources */,
 				660C016629F8CB2100B6C410 /* SpendingController.swift in Sources */,
 				661BF2F729FA74B20079F419 /* DongTableViewCell.swift in Sources */,
+				660C883C2A2887DB00AB0511 /* BeautifulBarChart.swift in Sources */,
 				66111B202A2497DE006A44F1 /* Money.swift in Sources */,
+				660B06D22A2835F0000CA498 /* ThuNhapViewController.swift in Sources */,
+				660B06D02A28352C000CA498 /* ChiTieuViewController.swift in Sources */,
 				66111B1E2A249722006A44F1 /* Category.swift in Sources */,
 				660C018629F8FB7500B6C410 /* SearchController.swift in Sources */,
 				66111B152A2486F6006A44F1 /* FMDatabasePool.m in Sources */,
 				66111B142A2486F6006A44F1 /* FMDatabaseQueue.m in Sources */,
+				660C883E2A2887DB00AB0511 /* BasicBarChart.swift in Sources */,
 				661BF2F929FBA2630079F419 /* DetailTableViewCell.swift in Sources */,
+				660C88422A28883B00AB0511 /* ViewController.swift in Sources */,
 				660B26FB29FD06E700ECCC26 /* DetailController.swift in Sources */,
 				660C016429F8CB2100B6C410 /* AppDelegate.swift in Sources */,
 				660B26FD29FD167F00ECCC26 /* SearchTableViewCell.swift in Sources */,
 				66111B162A2486F6006A44F1 /* FMDatabaseAdditions.m in Sources */,
+				660C882F2A286A4200AB0511 /* ThongKeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

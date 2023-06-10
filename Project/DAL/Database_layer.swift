@@ -242,16 +242,384 @@ private let MONEY="money"
             let _=close()
         }
     }
-    public func Khoitaogiatri(){
+    public func getAllHistory(history:inout [History]){
+        if open(){
+            var result:FMResultSet?
+            let sql="SELECT * FROM \(HISTORY_TABLE_NAME)"
+            do{
+                result=try database?.executeQuery(sql, values: nil)
+            }
+            catch{
+                os_log("Khong the doc date tu database")
+            }
+            if let result = result{
+                
+                while(result.next()){
+                    let history_id=result.int(forColumn: HISTORY_ID)
+                    let category_id=result.int(forColumn: HISTORY_CATEGORY_ID)
+                    let date_id=result.int(forColumn: HISTORY_DATE_ID)
+                    let money=result.double(forColumn: HISTORY_MONEY)
+                    let item=History(history_id: Int(history_id), category_id: Int(category_id), date_id: Int(date_id), transaction_money: Double(money))
+                    history.append(item)
+                }
+            }
+            let _=close()
+        }
+    }
+    public func getHistory(date_id:Int,history:inout [History]){
+        if open(){
+            var result:FMResultSet?
+            let sql="SELECT * FROM \(HISTORY_TABLE_NAME) WHERE \(HISTORY_DATE_ID)=\(date_id)"
+            do{
+                result=try database?.executeQuery(sql, values: nil)
+            }
+            catch{
+                os_log("Khong the doc date tu database")
+            }
+            if let result = result{
+                
+                while(result.next()){
+                    let history_id=result.int(forColumn: HISTORY_ID)
+                    let category_id=result.int(forColumn: HISTORY_CATEGORY_ID)
+                    let date_id=result.int(forColumn: HISTORY_DATE_ID)
+                    let money=result.double(forColumn: HISTORY_MONEY)
+                    let item=History(history_id: Int(history_id), category_id: Int(category_id), date_id: Int(date_id), transaction_money: Double(money))
+                    history.append(item)
+                }
+            }
+            let _=close()
+        }
+    }
+    
+    public func getAllHistoryWithDate(arrGiaoDich: inout [GiaoDich]) {
+        if open() {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd/MM/yyyy"
+            
+            let result: FMResultSet? = database?.executeQuery("SELECT * FROM \(HISTORY_TABLE_NAME) JOIN \(DATE_TABLE_NAME) ON \(HISTORY_TABLE_NAME).\(HISTORY_DATE_ID)=\(DATE_TABLE_NAME).\(DATE_ID)", withArgumentsIn: [])
+            
+            while result?.next() == true {
+                if let historyDate = result?.date(forColumn: DATE) {
+                    let ngayHienTai = formatter.string(from: historyDate)
+                    
+                    var loaigd = result?.string(forColumn: CATEGORY_ID)
+                    if loaigd == "9" {
+                        loaigd = "food"
+                    } else if loaigd == "7" {
+                        loaigd = "bill"
+                    } else if loaigd == "8" {
+                        loaigd = "salary"
+                    } else {
+                        loaigd = "bonus"
+                    }
+                    
+                    let dateSqlite = result?.string(forColumn: DATE)
+                    
+                    let gd = GiaoDich(ngayGiaoDich: ngayHienTai, loaiGiaoDich: loaigd!, soTien: Int(result?.int(forColumn: HISTORY_MONEY) ?? 0), ngay: ngayHienTai)
+                    arrGiaoDich.append(gd)
+                }
+            }
+            let _ = close()
+        }
+    }
+
+    
+    public func getCategory(cate_id:Int,categories:inout Category){
+        if open(){
+            var result:FMResultSet?
+            let sql="SELECT * FROM \(CATEGORY_TABLE_NAME) WHERE \(CATEGORY_ID)=\(cate_id)"
+            do{
+                result=try database?.executeQuery(sql, values: nil)
+            }
+            catch{
+                os_log("Khong the doc date tu database")
+            }
+            if let result = result{
+                while(result.next()){
+                    let cateid=result.int(forColumn: CATEGORY_ID)
+                    let catename=result.string(forColumn: CATEGORY_NAME) ?? ""
+                    let cateloai=result.int(forColumn: CATEGORY_LOAI)
+                    let category=Category(category_id: Int(cateid), category_name: catename, category_loai: Int(cateloai))
+                    categories=category
+                }
+            }
+            let _=close()
+        }
+    }
+    public func getDate(date_id:Int,dates:inout Dates){
+        if open(){
+            var result:FMResultSet?
+            let sql="SELECT * FROM \(DATE_TABLE_NAME) WHERE \(DATE_ID)=\(date_id)"
+            do{
+                result=try database?.executeQuery(sql, values: nil)
+            }
+            catch{
+                os_log("Khong the doc date tu database")
+            }
+            if let result = result{
+                while(result.next()){
+                    let date_id=result.int(forColumn: DATE_ID)
+                    let date_name=result.date(forColumn: DATE)
+                    let date_money=result.double(forColumn: DATE_MONEY)
+                    let date_wallet=result.double(forColumn: DATE_WALLET)
+                    let date=Dates(date_id: Int(date_id), date: date_name!, money: Double(date_money),wallet:Double(date_wallet))
+                    dates=date
+                }
+            }
+            let _=close()
+        }
+    }
+    public func SearchCate(cate_id:Int,history:inout [History]){
         
         if open(){
-            let sql="INSERT INTO \(MONEY) (\(MONEY)) VALUES(?)"
-            if database!.executeUpdate(sql, withArgumentsIn: [500000]){
-                
-                os_log("Bien a duoc ghi thanh cong vao database")
+            var sql=""
+            var result:FMResultSet?
+            if cate_id==0{
+                sql = "SELECT * FROM \(HISTORY_TABLE_NAME)"
+                os_log("test")
             }
             else{
-                os_log("Khong the ghi a vao database")
+                sql = "SELECT * FROM \(HISTORY_TABLE_NAME) WHERE  \(HISTORY_CATEGORY_ID)=\(cate_id)"
+            }
+            do{
+                result=try database?.executeQuery(sql, values: nil)
+                
+            }
+            catch{
+                os_log("Khong the truy van tu database")
+            }
+            if let result = result{
+                while(result.next()){
+                    let history_id=result.int(forColumn: HISTORY_ID)
+                    let category_id=result.int(forColumn: HISTORY_CATEGORY_ID)
+                    let date_id=result.int(forColumn: HISTORY_DATE_ID)
+                    let money=result.double(forColumn: HISTORY_MONEY)
+                    let item=History(history_id: Int(history_id), category_id: Int(category_id), date_id: Int(date_id), transaction_money: Double(money))
+                    history.append(item)
+                }
+            }
+            let _=close()
+        }
+    }
+    public func Update_Date(d_id:Int, m_New:Double, w_New:Double)
+    {
+        if open(){
+            
+            let sql="UPDATE \(DATE_TABLE_NAME) SET \(DATE_MONEY)=?, \(DATE_WALLET)=? WHERE \(DATE_ID)=?"
+            if database!.executeUpdate(sql, withArgumentsIn: [m_New, w_New, d_id]){
+                
+                os_log("Sua du lieu thanh cong vao database")
+            }
+            else{
+                os_log("Khong the ghi du lieu vao database")
+            }
+            let _=close()
+        }
+    }
+    public func Update_History(h_id:Int, d_id_New:Int, cate_id_New:Int, h_m_New:Double)
+    {
+        if open(){
+            
+            let sql="UPDATE \(HISTORY_TABLE_NAME) SET \(HISTORY_DATE_ID)=?, \(HISTORY_CATEGORY_ID)=?, \(HISTORY_MONEY)=? WHERE \(HISTORY_ID)=?"
+            if database!.executeUpdate(sql, withArgumentsIn: [d_id_New, cate_id_New, h_m_New, h_id]){
+                
+                os_log("Sua du lieu thanh cong vao database")
+            }
+            else{
+                os_log("Khong the ghi du lieu vao database")
+            }
+            let _=close()
+        }
+    }
+    public func Update_Money(money_id:Int, money_New:Double)
+    {
+        if open(){
+            
+            let sql="UPDATE \(MONEY_TABLE_NAME) SET \(MONEY)=? WHERE \(MONEY_ID)=?"
+            if database!.executeUpdate(sql, withArgumentsIn: [money_New, money_id]){
+                
+                os_log("Sua du lieu thanh cong vao database")
+            }
+            else{
+                os_log("Khong the ghi du lieu vao database")
+            }
+            let _=close()
+        }
+    }
+    
+    public func Insert_Date(date_New:Date, m_New:Double, w_New:Double){
+        
+        if open(){
+            
+            let sql="INSERT INTO \(DATE_TABLE_NAME) (\(DATE), \(DATE_MONEY), \(DATE_WALLET)) VALUES(?,?,?)"
+            if database!.executeUpdate(sql, withArgumentsIn: [date_New, m_New, w_New]){
+                
+                os_log("Them thanh cong")
+            }
+            else{
+                os_log("Khong the ghi vao bang DATE")
+            }
+            let _=close()
+        }
+    }
+    public func Update_History_Test()
+    {
+        if open(){
+            
+            let sql="UPDATE \(HISTORY_TABLE_NAME) SET \(HISTORY_MONEY) = -3000 WHERE \(HISTORY_ID) = 3"
+            if database!.executeUpdate(sql, withArgumentsIn: [2]){
+                
+                os_log("Sua du lieu thanh cong vao database")
+            }
+            else{
+                os_log("Khong the ghi du lieu vao database")
+            }
+            let _=close()
+        }
+    }
+    public func Remove_Date(date_id:Int){
+        if open(){
+            
+            let sql="DELETE FROM \(DATE_TABLE_NAME) WHERE \(DATE_ID)=\(date_id)"
+            if database!.executeStatements(sql){
+                
+                os_log("OK")
+            }
+            else{
+                os_log("No OK")
+            }
+            let _=close()
+        }
+    }
+    public func Remove_History(history_id:Int){
+        if open(){
+            
+            let sql="DELETE FROM \(HISTORY_TABLE_NAME) WHERE \(HISTORY_ID)=\(history_id)"
+            if database!.executeStatements(sql){
+                
+                os_log("OK")
+            }
+            else{
+                os_log("No OK")
+            }
+            let _=close()
+        }
+    }
+    public func Insert_Cate(cateName_New:String, cateLoai_New:Int){
+        //3. Table category
+        if open(){
+            
+            let sql="INSERT INTO \(CATEGORY_TABLE_NAME) (\(CATEGORY_NAME), \(CATEGORY_LOAI)) VALUES(?,?)"
+            if database!.executeUpdate(sql, withArgumentsIn: [cateName_New, cateLoai_New]){
+                
+                os_log("Them thanh cong")
+            }
+            else{
+                os_log("Khong the ghi vao database")
+            }
+            let _=close()
+        }
+    }
+    public func Insert_Money(money:Double){
+        if open(){
+            
+            let sql="INSERT INTO \(MONEY_TABLE_NAME) (\(MONEY)) VALUES(?)"
+            if database!.executeUpdate(sql, withArgumentsIn: [money]){
+                
+                os_log("Them thanh cong")
+            }
+            else{
+                os_log("Khong the ghi vao database")
+            }
+            let _=close()
+    }
+    }
+        
+    public func Insert_CateNew(cateId:Int,cateName_New:String, cateLoai_New:Int){
+        //3. Table category
+        if open(){
+            
+            let sql="INSERT INTO \(CATEGORY_TABLE_NAME) (\(CATEGORY_ID), \(CATEGORY_NAME), \(CATEGORY_LOAI)) VALUES(?,?,?)"
+            if database!.executeUpdate(sql, withArgumentsIn: [cateId, cateName_New, cateLoai_New]){
+                
+                os_log("Them thanh cong")
+            }
+            else{
+                os_log("Khong the ghi vao database")
+            }
+            let _=close()
+        }
+    }
+    public func RemoveDate()
+    {
+        if open(){
+            
+            let sql="DROP TABLE \(DATE_TABLE_NAME)"
+            if database!.executeStatements(sql){
+                
+                os_log("OK")
+            }
+            else{
+                os_log("No OK")
+            }
+            let _=close()
+        }
+    }
+    public func RemoveHistory()
+    {
+        if open(){
+            
+            let sql="DROP TABLE \(HISTORY_TABLE_NAME)"
+            if database!.executeStatements(sql){
+                
+                os_log("OK")
+            }
+            else{
+                os_log("No OK")
+            }
+            let _=close()
+        }
+    }
+    public func Date_Sample(date_New:Date, m_New:Double, w_New:Double){
+        
+        if open(){
+            
+            let sql="INSERT INTO \(DATE_TABLE_NAME) (\(DATE), \(DATE_MONEY), \(DATE_WALLET)) VALUES(?,?,?)"
+            if database!.executeUpdate(sql, withArgumentsIn: [date_New, m_New, w_New]){
+                
+                os_log("Them thanh cong")
+            }
+            else{
+                os_log("Khong the ghi vao database")
+            }
+            let _=close()
+        }
+    }
+    public func date_Sample(date_New:Date, m_New:Double, w_New:Double){
+        
+        if open(){
+            
+            let sql="INSERT INTO \(DATE_TABLE_NAME) (\(DATE), \(DATE_MONEY), \(DATE_WALLET)) VALUES(?,?,?)"
+            if database!.executeUpdate(sql, withArgumentsIn: [date_New, m_New, w_New]){
+                
+                os_log("Them thanh cong")
+            }
+            else{
+                os_log("Khong the ghi vao database")
+            }
+            let _=close()
+        }
+    }
+    public func history_Sample(d_id_New:Int, cate_id_New:Int, h_m_New:Double){
+        if open(){
+            
+            let sql="INSERT INTO \(HISTORY_TABLE_NAME) (\(HISTORY_DATE_ID), \(HISTORY_CATEGORY_ID), \(HISTORY_MONEY)) VALUES(?,?,?)"
+            if database!.executeUpdate(sql, withArgumentsIn: [d_id_New, cate_id_New, h_m_New]){
+                
+                os_log("Them thanh cong")
+            }
+            else{
+                os_log("Khong the ghi vao database")
             }
             let _=close()
         }
